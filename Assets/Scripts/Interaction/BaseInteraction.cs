@@ -39,6 +39,7 @@ public abstract class BaseInteraction : MonoBehaviour
     /// </summary>
     public virtual void ExitAction() { return; }
 
+    // verifie si en collision avec le personnage -> ajoute bouton interaction
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!_peutInteragir) return;
@@ -51,6 +52,7 @@ public abstract class BaseInteraction : MonoBehaviour
         }
     }
 
+    // verifie si perso quitte la collision -> enleve interaction
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (!_peutInteragir) return;

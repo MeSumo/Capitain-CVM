@@ -20,7 +20,7 @@ public class EchelleInteraction : BaseInteraction
         pm.SetEnMonte(true);
         Rigidbody2D rb = pm.gameObject.GetComponent<Rigidbody2D>();
         rb.gravityScale = 0;
-        rb.velocity = new Vector2(rb.velocity.x, 0);
+        rb.velocity = new Vector2(rb.velocity.x, 0); // vitesse actuel du perso
 
         _colliderPlateform.enabled = false;
 

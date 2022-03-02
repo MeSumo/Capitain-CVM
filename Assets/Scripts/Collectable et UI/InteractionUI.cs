@@ -32,12 +32,14 @@ public class InteractionUI : MonoBehaviour
 
     /// <summary>
     /// Lien vers l'enfant contenant le texte
+    /// référence vers texte d'interaction
     /// </summary>
     [SerializeField]
     private TextMeshProUGUI _textInteraction;
 
     /// <summary>
     /// Lien vers l'enfant contenant le texte du controle
+    /// référence vers lettre qu'on met dans l'image
     /// </summary>
     [SerializeField]
     private TextMeshProUGUI _textKeyboardControl;
@@ -55,7 +57,7 @@ public class InteractionUI : MonoBehaviour
     [SerializeField]
     private Key _keyboardControlActionName;
 
-    private Image _image;
+    private Image _image; // image du bouton
 
     private void Start()
     {
@@ -66,8 +68,9 @@ public class InteractionUI : MonoBehaviour
         if (_textInteraction == null || _textKeyboardControl == null)
             throw new MissingReferenceException("Un ou des enfants sont manquants");
 
+        // verifie si clavier est connecter
         if (Keyboard.current != null)
-        {
+        {// detect si on change pour une manette/ deconnecte une manette
             InputSystem.onDeviceChange +=
                 (device, change) =>
                 {
@@ -89,6 +92,7 @@ public class InteractionUI : MonoBehaviour
         this._textKeyboardControl.enabled = (Gamepad.current == null);
     }
 
+    // convertir les clés appuyé selon le keyboard du jeu 
     public void SetKeyboardControlText()
     {
         if (Keyboard.current != null)
