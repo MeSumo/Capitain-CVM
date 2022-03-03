@@ -5,7 +5,7 @@ using System;
 /// <summary>
 /// Permet la manipulation des données pour l'encryptage
 /// </summary>
-public sealed class DataManipulator
+public sealed class DataManipulator // sealed -> peut pas hériter de la classe
 {
 
     private string key = "XCtmd6zUnPVgT9dW6vkuyNRbxsjvQqpM";

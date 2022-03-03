@@ -8,7 +8,7 @@ using UnityEngine.Audio;
 /// Représente un élément audio avec un nom (étiquette)
 /// </summary>
 [System.Serializable]
-struct AudioElement
+struct AudioElement // afin d'avoir un audio (background sonore) par scene
 {
     public string Nom;
     public AudioClip Clip;

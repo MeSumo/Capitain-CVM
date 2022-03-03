@@ -22,7 +22,7 @@ public static class PlayerDataJson
         json += tab + "\"volumeMusique\":" + data.VolumeMusique.ToString().Replace(',', '.') + "," + newline; 
         json += tab + "\"volumeEffet\":" + data.VolumeEffet.ToString().Replace(',', '.') + "," + newline; 
         json += tab + "\"chestOpenList\":[";
-        if (data.ListeCoffreOuvert.Length > 0)
+        if (data.ListeCoffreOuvert.Length > 0) // ajoute les coffres ouverts dans la liste
         {
             json += newline;
             for (int i = 0; i < data.ListeCoffreOuvert.Length; i++)

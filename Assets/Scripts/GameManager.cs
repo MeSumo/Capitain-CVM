@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
     {
         using (StreamWriter stream = new StreamWriter(
             Path.Combine(Application.persistentDataPath, "savedata_encrypt.json"),
-            false, System.Text.Encoding.UTF8))
+            false, System.Text.Encoding.UTF8)) // false est pour ecraser les données et non append
         {
             //DataManipulator manipulator = new DataManipulator();
             stream.Write(/*manipulator.Encrypt(*/PlayerDataJson.WriteJson(data)/*)*/);
