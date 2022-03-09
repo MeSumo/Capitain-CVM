@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScoreUpgrade : MonoBehaviour
+public class LifeUpgrade : MonoBehaviour
 {
     /// <summary>
-    /// Valeur de l'énergie regagner au contact
+    /// Valeur de la vie regagner au contact
     /// </summary>
     [SerializeField]
-    private int _gainPoint = 3;
+    private int _regainLife = 1;
     [SerializeField]
     private AudioClip _clip;
 
     /// <summary>
-    /// Nom de la convention utiliser dans le fichier de sauvegarde
+    /// Nom du paycheck utiliser dans le fichier de sauvegarde
     /// </summary>
     private string _name;
 
@@ -24,8 +24,8 @@ public class ScoreUpgrade : MonoBehaviour
             GameManager.Instance.AudioManager
                 .PlayClipAtPoint(_clip, this.transform.position);
             GameManager.Instance
-                .PlayerData.IncrScore(this._gainPoint);
-            GameManager.Instance.PlayerData.IncrCollectable(0);
+                .PlayerData.IncrVie(this._regainLife);
+            GameManager.Instance.PlayerData.IncrCollectable(2);
             GameObject.Destroy(this.gameObject);
         }
     }

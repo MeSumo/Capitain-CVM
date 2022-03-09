@@ -12,6 +12,11 @@ public class EnergyUpgrade : MonoBehaviour
     [SerializeField]
     private AudioClip _clip;
 
+    /// <summary>
+    /// Nom de la carte utiliser dans le fichier de sauvegarde
+    /// </summary>
+    private string _name;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag.Equals("Player"))
@@ -20,6 +25,7 @@ public class EnergyUpgrade : MonoBehaviour
                 .PlayClipAtPoint(_clip, this.transform.position);
             GameManager.Instance
                 .PlayerData.IncrEnergie(this._regainEnergie);
+            GameManager.Instance.PlayerData.IncrCollectable(1);
             GameObject.Destroy(this.gameObject);
         }
     }

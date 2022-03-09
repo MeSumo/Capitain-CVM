@@ -50,6 +50,15 @@ public class PlayerData
     /// </summary>
     public const int MAX_ENERGIE = 4;
     /// <summary>
+    /// Liste contenant le nombre cueilli pour chaque collectable
+    /// </summary>
+    private List<int> _nbCollectablesList;
+    /// <summary>
+    /// Liste contenant les niveaux complete
+    /// </summary>
+    private List<string> _niveauCompleteList;
+
+    /// <summary>
     /// Permet d'identifier les actions sur le UI à réaliser
     /// lors de la perte d'énergie
     /// </summary>
@@ -68,7 +77,8 @@ public class PlayerData
     public int Vie { get { return this._vie; } }
     public int Score { get { return this._score; } }
     public string[] ListeCoffreOuvert { get { return this._chestOpenList.ToArray(); } }
-
+    public int[] ListeNombreCollectables { get { return this._nbCollectablesList.ToArray(); } }
+    public string[] ListeNiveauComplete { get { return this._niveauCompleteList.ToArray(); } }
     public PlayerData()
     {
         this._vie = 0;
@@ -81,12 +91,16 @@ public class PlayerData
         this.UIPerteVie = null;
         this.Gameover = null;
         this._chestOpenList = new List<string>();
+        // index 0 -> convention, 1 -> cartemembre, 2 -> paycheck
+        this._nbCollectablesList = new List<int>() {0, 0, 0};
+        this._niveauCompleteList = new List<string>();
     }
 
     public PlayerData(int vie = 1, int energie = 2, int score = 0,
         float volumeGeneral = 0, float volumeMusique = 0, float volumeEffet = 0,
         System.Action uiPerteEnergie = null, System.Action uiPerteVie = null,
-        System.Action gameOver = null, List<string> ChestList = null)
+        System.Action gameOver = null, List<string> ChestList = null, 
+        List<int> CollectablesList = null, List<string> NiveauList = null)
     {
         this._vie = vie;
         this._energie = energie;
@@ -100,6 +114,12 @@ public class PlayerData
         this._chestOpenList = new List<string>();
         if (ChestList != null)
             this._chestOpenList = ChestList;
+        this._nbCollectablesList = new List<int>() { 0, 0, 0 };
+        if (CollectablesList != null)
+            this._nbCollectablesList = CollectablesList;
+        this._niveauCompleteList = new List<string>();
+        if (NiveauList != null)
+            this._niveauCompleteList = NiveauList;
     }
 
     /// <summary>
@@ -186,4 +206,23 @@ public class PlayerData
     {
         return this._chestOpenList.Contains(nom);
     }
+
+    /// <summary>
+    /// Incrémente la quantité collectionnée de ce collectable
+    /// </summary>
+    /// <param name="collectable">Position du collectable dans la liste</param>
+    public void IncrCollectable(int collectable)
+    {
+        this._nbCollectablesList.Insert(collectable, this._nbCollectablesList[collectable] += 1);
+    }
+
+    /// <summary>
+    /// Ajoute le nom de la scene complete
+    /// </summary>
+    /// <param name="nom">Nom de la scene a ajouter</param>
+    public void AjouterNiveauComplete(string nom)
+    {
+        this._niveauCompleteList.Add(nom);
+    }
+
 }
