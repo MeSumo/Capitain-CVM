@@ -17,7 +17,8 @@ public class FinDeNiveau : MonoBehaviour
             _name = SceneManager.GetActiveScene().name;
             GameManager.Instance.PlayerData.AjouterNiveauComplete(_name);
             GameManager.Instance.SaveData();
-            SceneManager.LoadScene("MainMenu");
+            //SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 }
