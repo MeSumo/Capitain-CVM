@@ -222,7 +222,8 @@ public class PlayerData
     /// <param name="nom">Nom de la scene a ajouter</param>
     public void AjouterNiveauComplete(string nom)
     {
-        this._niveauCompleteList.Add(nom);
+        if (!this._niveauCompleteList.Contains(nom))
+            this._niveauCompleteList.Add(nom);
     }
 
 }
