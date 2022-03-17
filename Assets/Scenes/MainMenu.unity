@@ -5580,6 +5580,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1744972675}
+  - component: {fileID: 1744972676}
   m_Layer: 5
   m_Name: Collectables
   m_TagString: Untagged
@@ -5612,6 +5613,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1744972676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1744972674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92e6e6c7052304f4687e2d94eee37634, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textes:
+  - {fileID: 1822948473}
+  - {fileID: 2092480265}
+  - {fileID: 2022920350}
 --- !u!1 &1751471120
 GameObject:
   m_ObjectHideFlags: 0
@@ -8364,7 +8381,7 @@ PrefabInstance:
     - target: {fileID: 8825697746811437030, guid: 848fc5e9804caa541b89cfc389a4bbca,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 848fc5e9804caa541b89cfc389a4bbca, type: 3}
