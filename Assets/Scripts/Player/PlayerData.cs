@@ -114,7 +114,7 @@ public class PlayerData
         this._chestOpenList = new List<string>();
         if (ChestList != null)
             this._chestOpenList = ChestList;
-        this._nbCollectablesList = new List<int>() { 0, 0, 0 };
+        this._nbCollectablesList = new List<int>() {0, 0, 0};
         if (CollectablesList != null)
             this._nbCollectablesList = CollectablesList;
         this._niveauCompleteList = new List<string>();
@@ -213,7 +213,12 @@ public class PlayerData
     /// <param name="collectable">Position du collectable dans la liste</param>
     public void IncrCollectable(int collectable)
     {
-        this._nbCollectablesList.Insert(collectable, this._nbCollectablesList[collectable] += 1);
+        //this._nbCollectablesList.Insert(collectable, this._nbCollectablesList[collectable] += 1);
+        this._nbCollectablesList[collectable] = (this._nbCollectablesList[collectable] += 1);
+        for (int i = 0; i < this._nbCollectablesList.Count; i++)
+        {
+            Debug.Log(i + ": " + _nbCollectablesList[i]);
+        }
     }
 
     /// <summary>

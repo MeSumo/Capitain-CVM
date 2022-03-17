@@ -19,10 +19,10 @@ public class CollectablesUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _nbCollectablesList = GameManager.Instance.PlayerData.ListeNombreCollectables;
+        this._nbCollectablesList = GameManager.Instance.PlayerData.ListeNombreCollectables;
         for(int i = 0; i < _textes.Length; i++)
         {
-            _textes[i].GetComponent<TextMeshProUGUI>().text = _nbCollectablesList[i].ToString();
+            this._textes[i].GetComponent<TextMeshProUGUI>().text = _nbCollectablesList[i].ToString();
         }
     }
 
