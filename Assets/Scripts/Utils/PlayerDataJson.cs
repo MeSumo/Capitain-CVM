@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 /// <summary>
 /// Offre un moteur de lecture/écriture du JSON
 /// pour l'objet <code>PlayerData</code>
@@ -36,6 +37,32 @@ public static class PlayerDataJson
             json += tab + "]" + newline;
         }
         else json += "]" + newline;
+        json += tab + "\"nbCollectablesList\":[";
+        json += newline; // ajoute liste des collectables collectés
+        for (int i = 0; i < data.ListeNombreCollectables.Length; i++)
+        {
+            int collectableData = data.ListeNombreCollectables[i];
+            json += tab + tab /*+ "\""*/ + collectableData /*+ "\""*/;
+            if (i + 1 < data.ListeNombreCollectables.Length)
+                json += ",";
+            json += newline;
+        }
+        json += tab + "]" + newline;
+        json += tab + "\"niveauCompleteList\":[";
+        if (data.ListeNiveauComplete.Length > 0) // ajoute les niveaux complétés
+        {
+            json += newline;
+            for (int i = 0; i < data.ListeNiveauComplete.Length; i++)
+            {
+                string niveauData = data.ListeNiveauComplete[i];
+                json += tab + tab + "\"" + niveauData + "\"";
+                if (i + 1 < data.ListeNiveauComplete.Length)
+                    json += ",";
+                json += newline;
+            }
+            json += tab + "]" + newline;
+        }
+        else json += "]" + newline;
         json += "}";
         return json;
     }
@@ -61,6 +88,8 @@ public static class PlayerDataJson
         int vie = 0, energie = 0, score = 0;
         float vlmGeneral = 0, vlmMusique = 0, vlmEffet = 0;
         List<string> chests = new List<string>();
+        List<int> collectables = new List<int>();
+        List<string> niveau = new List<string>();
         string[] lignes = json.Split('\n');
         
         for(int i = 1; i < lignes.Length || lignes[i] != "}"; i++)
@@ -103,10 +132,32 @@ public static class PlayerDataJson
                             .Replace("\"", string.Empty));
                     }
                     break;
+                case "\"nbCollectablesList\"":
+                    if (parametre[1] != "[")
+                        throw new JSONFormatExpcetion();
+                    while(lignes[++i] != "]")
+                    {
+                        Debug.Log(lignes[i]);
+                        Debug.Log("transform: " + int.Parse(lignes[i].Replace(",", string.Empty)));
+                        collectables.Add(int.Parse(lignes[i].Replace(",", string.Empty)));
+                    }
+                    break;
+                case "\"niveauCompleteList\"":
+                    if (parametre[1] == "[]")
+                        break;
+                    else if (parametre[1] != "[")
+                        throw new JSONFormatExpcetion();
+                    while (lignes[++i] != "]")
+                    {
+                        niveau.Add(lignes[i]
+                            .Replace(",", string.Empty)
+                            .Replace("\"", string.Empty));
+                    }
+                    break;
             }
         }
 
-        return new PlayerData(vie, energie, score, vlmGeneral, vlmMusique, vlmEffet, ChestList: chests);
+        return new PlayerData(vie, energie, score, vlmGeneral, vlmMusique, vlmEffet, ChestList: chests, CollectablesList: collectables, NiveauList: niveau);
     }
 }
 

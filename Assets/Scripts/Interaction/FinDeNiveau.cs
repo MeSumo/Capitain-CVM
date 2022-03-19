@@ -16,6 +16,7 @@ public class FinDeNiveau : MonoBehaviour
             Debug.Log("Félicitation, le niveau est terminé.");
             _name = SceneManager.GetActiveScene().name;
             GameManager.Instance.PlayerData.AjouterNiveauComplete(_name);
+            Debug.Log(GameManager.Instance.PlayerData.ListeNiveauComplete[0]);
             GameManager.Instance.SaveData();
             if (SceneManager.GetActiveScene().buildIndex == 3)
                 SceneManager.LoadScene("MainMenu");
