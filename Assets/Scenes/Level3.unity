@@ -32421,7 +32421,7 @@ PrefabInstance:
     - target: {fileID: 1279378268419749080, guid: 10ff46b1eb974844caf87046558b76bf,
         type: 3}
       propertyPath: _forceSaut
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1279378268419749081, guid: 10ff46b1eb974844caf87046558b76bf,
         type: 3}
