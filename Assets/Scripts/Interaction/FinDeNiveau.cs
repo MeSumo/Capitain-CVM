@@ -16,12 +16,11 @@ public class FinDeNiveau : MonoBehaviour
             Debug.Log("Félicitation, le niveau est terminé.");
             _name = SceneManager.GetActiveScene().name;
             GameManager.Instance.PlayerData.AjouterNiveauComplete(_name);
-            Debug.Log(GameManager.Instance.PlayerData.ListeNiveauComplete[0]);
             GameManager.Instance.SaveData();
-            if (SceneManager.GetActiveScene().buildIndex == 3)
+            if (SceneManager.GetActiveScene().buildIndex == 3) // si rendu au niveau 3, retourne au menu
                 SceneManager.LoadScene("MainMenu");
             else
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); // load prochain niveau
         }
     }
 }

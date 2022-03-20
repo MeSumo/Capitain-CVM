@@ -145,6 +145,7 @@ public class PlayerData
         this.UIPerteVie();
         if (this._vie <= 0)
             this.Gameover();
+
         else
         {
             this.IncrEnergie(MAX_ENERGIE);
@@ -213,12 +214,7 @@ public class PlayerData
     /// <param name="collectable">Position du collectable dans la liste</param>
     public void IncrCollectable(int collectable)
     {
-        //this._nbCollectablesList.Insert(collectable, this._nbCollectablesList[collectable] += 1);
         this._nbCollectablesList[collectable] = (this._nbCollectablesList[collectable] += 1);
-        for (int i = 0; i < this._nbCollectablesList.Count; i++)
-        {
-            Debug.Log(i + ": " + _nbCollectablesList[i]);
-        }
     }
 
     /// <summary>

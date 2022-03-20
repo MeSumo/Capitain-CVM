@@ -12,11 +12,6 @@ public class LifeUpgrade : MonoBehaviour
     [SerializeField]
     private AudioClip _clip;
 
-    /// <summary>
-    /// Nom du paycheck utiliser dans le fichier de sauvegarde
-    /// </summary>
-    private string _name;
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag.Equals("Player"))

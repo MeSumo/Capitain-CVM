@@ -53,7 +53,7 @@ public class EnnemyBehaviour : MonoBehaviour
             _animator.SetTrigger("Destruction");
             GameManager.Instance.PlayerData.IncrScore(this._pointDestruction);
             this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
-            if (this.gameObject.name.Equals("Snake"))
+            if (this.gameObject.name.Equals("Snake")) // cherche la bon script a disable selon l'enemy courant
                 this.gameObject.GetComponent<EnnemyPatrol>().enabled = false;
             else
                 this.gameObject.GetComponent<GardePatrol>().enabled = false;

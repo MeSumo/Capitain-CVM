@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 /// <summary>
 /// Offre un moteur de lecture/écriture du JSON
 /// pour l'objet <code>PlayerData</code>
@@ -42,7 +41,7 @@ public static class PlayerDataJson
         for (int i = 0; i < data.ListeNombreCollectables.Length; i++)
         {
             int collectableData = data.ListeNombreCollectables[i];
-            json += tab + tab /*+ "\""*/ + collectableData /*+ "\""*/;
+            json += tab + tab + collectableData;
             if (i + 1 < data.ListeNombreCollectables.Length)
                 json += ",";
             json += newline;
@@ -137,8 +136,6 @@ public static class PlayerDataJson
                         throw new JSONFormatExpcetion();
                     while(lignes[++i] != "]")
                     {
-                        Debug.Log(lignes[i]);
-                        Debug.Log("transform: " + int.Parse(lignes[i].Replace(",", string.Empty)));
                         collectables.Add(int.Parse(lignes[i].Replace(",", string.Empty)));
                     }
                     break;

@@ -68,6 +68,7 @@ public class GardePatrol : MonoBehaviour
         if (!_enStop)
             this.transform.Translate(direction.normalized * _vitesse * Time.deltaTime, Space.World);
 
+        // apres certains temps en stop, cherche autre cible pour commencer a marcher
         if (Time.fixedTime > _tempsDebutStop + DelaisStop && _auPoint)
         {
             _enStop = false;
@@ -81,6 +82,7 @@ public class GardePatrol : MonoBehaviour
         if (direction.x < 0 && !_sr.flipX) _sr.flipX = true;
         else if (direction.x > 0 && _sr.flipX) _sr.flipX = false;
 
+        // si arriver proche d'une cible, fait animation stop
         if (Vector3.Distance(this.transform.position, _cible.position) < _distanceSeuil && !_auPoint)
         {
             _tempsDebutStop = Time.fixedTime;
